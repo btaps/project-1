@@ -1,4 +1,4 @@
-				USER STORY
+# User Story
 
 1) User enters website and sees the webpage with title, nav bar, and game. Nav bar points to different places on the webpage like 'instructions', 'about game', etc.
 
@@ -13,3 +13,4 @@
 6) The enemies will appear at random times as long as the player is still alive.
 
 
+![Wireframe-Sketch](https://user-images.githubusercontent.com/54961818/68144546-cacfe200-fee8-11e9-8e66-5cafe77394b0.png)
