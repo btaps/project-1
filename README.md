@@ -1,4 +1,4 @@
-				USER STORY
+# User Story
 
 1) User enters website and sees the webpage with title, nav bar, and game. Nav bar points to different places on the webpage like 'instructions', 'about game', etc.
 
