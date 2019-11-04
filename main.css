@@ -1,18 +1,29 @@
-
+@import url('https://fonts.googleapis.com/css?family=Monoton|Montserrat+Alternates|Press+Start+2P&display=swap');
 
 
 body{
 	font-size: 18px;
+	font-family: 'Montserrat Alternates', sans-serif;
 }
 
-h1{
-	font-size: 2rem;
+.mainTitle{
+	font-family: 'Press Start 2P', cursive;
+	font-size: 4rem;
+	text-align: center;
 }
+ul{
+	list-style: none;
 
-.navBar{
-	font-size: 1rem;
 }
-
+li a{
+	font-size: 1.5rem;
+	display: block;
+ 	text-align: center;
+}
+li{
+	width: 100%;
+	background-color: red;
+}
 .gameScreen{
 	background-color: black;
 	width: 1350px;
@@ -24,4 +35,10 @@ h1{
 	color: white;
 	margin-left: 40%;
 	padding-top: 30%;
+}
+.title{
+	font-family: 'Monoton', cursive;
+	font-weight: 100;
+	font-size: 2rem;
+
 }
