@@ -1,0 +1,27 @@
+
+
+
+body{
+	font-size: 18px;
+}
+
+h1{
+	font-size: 2rem;
+}
+
+.navBar{
+	font-size: 1rem;
+}
+
+.gameScreen{
+	background-color: black;
+	width: 1350px;
+	height: 1000px;
+}
+
+.gameScreen div{
+	font-size: 3rem;
+	color: white;
+	margin-left: 40%;
+	padding-top: 30%;
+}
