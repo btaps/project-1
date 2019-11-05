@@ -1,44 +1,129 @@
 @import url('https://fonts.googleapis.com/css?family=Monoton|Montserrat+Alternates|Press+Start+2P&display=swap');
-
-
 body{
 	font-size: 18px;
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
-.mainTitle{
-	font-family: 'Press Start 2P', cursive;
-	font-size: 4rem;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-rows: minmax(100px, auto);
+  gap: 1em;
+}
+
+.container > div, header, footer{
+	background-color: #eeee;
+}
+
+header{
+	grid-column: 1/5;
 	text-align: center;
 }
-ul{
-	list-style: none;
+
+.gameScreen{
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-rows: minmax(50px,auto);
+	grid-column: 1/5;
+	grid-row: 2/8;
+	row-gap: 1em;
+	background-image: url('Game-Images/background.png');
+	/* background-size: contain; */
+}
+
+.instructions{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: minmax(50px,auto);
+	grid-column: 1/5;
+	grid-row: 8/10;
+	border: 1px solid black;
+}
+
+.about{
+
+	grid-column: 1/5;
+	grid-row: 10/14;
+}
+
+footer{
+	grid-column: 1/5;
+}
+
+.instructions h4{
+	grid-column: 1/5;
+	text-align: center;
+}
+.instructions img{
+	grid-column: 1/3;
+	grid-row: 2/5;
+	max-height: 300px;
+	max-width: 300px;
+}
+
+.instructions p{
+	grid-column: 3/5;
 
 }
+.about h4{
+	text-align: center;
+}
+
+ul{
+	list-style: none;
+	padding-left: 0;
+}
+
 li a{
 	font-size: 1.5rem;
 	display: block;
  	text-align: center;
-}
-li{
-	width: 100%;
-	background-color: red;
-}
-.gameScreen{
-	background-color: black;
-	width: 1350px;
-	height: 1000px;
+ 	background-color: red;
+ 	text-decoration: none;
+ 	color: black;
 }
 
-.gameScreen div{
-	font-size: 3rem;
-	color: white;
-	margin-left: 40%;
-	padding-top: 30%;
-}
 .title{
 	font-family: 'Monoton', cursive;
 	font-weight: 100;
 	font-size: 2rem;
-
 }
+.player{
+	background-image: url('Game-Images/Druggie.png');
+	background-repeat: no-repeat;
+	width: 300px;
+	height: 450px;
+	border: 1px solid black;
+	grid-row: 6/7;
+	grid-column: 3/4
+}
+
+.enemy1{
+	background-image: url('Game-Images/Enemy1.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 120px;
+	height: 150px;
+	border: 1px solid black;
+	grid-column: 1/2;
+}
+.enemy2{
+	background-image: url('Game-Images/Enemy2.png');
+	background-repeat: no-repeat;
+	border: 1px solid black;
+	background-size: contain;
+	width: 120px;
+	height: 150px;
+	grid-column: 3/4;
+}
+.enemy3{
+	background-image: url('Game-Images/Enemy3.png');
+	background-repeat: no-repeat;
+	border: 1px solid black;
+	background-size: contain;
+	width: 120px;
+	height: 150px;
+	grid-column: 6/7;
+}
+
+
