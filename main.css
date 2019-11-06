@@ -11,9 +11,9 @@ body{
   gap: 1em;
 }
 
-.container > div, header, footer{
+/* .container > div, header, footer{
 	background-color: #eeee;
-}
+} */
 
 header{
 	grid-column: 1/5;
@@ -21,14 +21,20 @@ header{
 }
 
 .gameScreen{
-	display: grid;
+/* 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
-	grid-template-rows: minmax(50px,auto);
+	grid-template-rows: minmax(20px, auto); */
 	grid-column: 1/5;
 	grid-row: 2/8;
-	row-gap: 1em;
+	/* row-gap: 1em; */
 	background-image: url('Game-Images/background.png');
-	/* background-size: contain; */
+	background-size: contain;
+	border: 3px solid red;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: black;
+/* 	width: 400px;
+	height: 400px; */
 }
 
 .instructions{
@@ -47,7 +53,7 @@ header{
 }
 
 footer{
-	grid-column: 1/5;
+	grid-column: 1/5;w
 }
 
 .instructions h4{
@@ -88,14 +94,16 @@ li a{
 	font-weight: 100;
 	font-size: 2rem;
 }
-.player{
+/* 
+.enemy4{
 	background-image: url('Game-Images/Druggie.png');
 	background-repeat: no-repeat;
-	width: 300px;
-	height: 450px;
-	border: 1px solid black;
-	grid-row: 6/7;
-	grid-column: 3/4
+	width: 250px;
+	height: 350px;
+	background-size: 250px 350px;
+	border: 1px solid #FFFF;
+	grid-row: 3;
+	grid-column: 1;
 }
 
 .enemy1{
@@ -104,26 +112,63 @@ li a{
 	background-size: contain;
 	width: 120px;
 	height: 150px;
-	border: 1px solid black;
+	border: 1px solid #FFFF;
 	grid-column: 1/2;
 }
 .enemy2{
 	background-image: url('Game-Images/Enemy2.png');
 	background-repeat: no-repeat;
-	border: 1px solid black;
+	border: 1px solid #FFFF;
 	background-size: contain;
 	width: 120px;
 	height: 150px;
 	grid-column: 3/4;
+	justify-self: center;
 }
 .enemy3{
 	background-image: url('Game-Images/Enemy3.png');
 	background-repeat: no-repeat;
-	border: 1px solid black;
+	border: 1px solid #FFFF;
 	background-size: contain;
 	width: 120px;
 	height: 150px;
-	grid-column: 6/7;
+	grid-column: 7;
 }
+ */
+/* .player{
+	background-image: url('Game-Images/player2.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-size: 100px 100px;
+	width: 100px;
+	height: 100px;
+	top: 100px;
+	border: 1px solid #FFFF;
+	position: relative; 
+	grid-row: 3;
+	grid-column: 7;
+	align-self: center;
+}
+*/
 
-
+.player{
+	width: 40px;
+	height: 20px;
+	position: relative;
+	left: 20px;
+	top: 180px;
+	/* background-color: white; */
+}
+.laser{
+	width: 20px;
+	height: 20px;
+	position: relative;
+}
+.enemies{
+	position: relative;
+}
+/* .yo{
+	top: 10px;
+	left: 200px;
+	position: relative;
+} */
