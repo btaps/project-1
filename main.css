@@ -27,7 +27,7 @@ header{
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: minmax(40px, auto);
 	grid-column: 1/5;
-	grid-row: 2/8;
+	grid-row: 2/9;
 	/* row-gap: 1em; */
 	background-image: url('Game-Images/background.png');
 	background-size: contain;
@@ -44,14 +44,14 @@ header{
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: minmax(50px,auto);
 	grid-column: 1/5;
-	grid-row: 8/10;
+	grid-row: 9/11;
 	border: 1px solid black;
 }
 
 .about{
 
 	grid-column: 1/5;
-	grid-row: 10/14;
+	grid-row: 11/15;
 }
 
 footer{
@@ -96,62 +96,6 @@ li a{
 	font-weight: 100;
 	font-size: 2rem;
 }
-/* 
-.enemy4{
-	background-image: url('Game-Images/Druggie.png');
-	background-repeat: no-repeat;
-	width: 250px;
-	height: 350px;
-	background-size: 250px 350px;
-	border: 1px solid #FFFF;
-	grid-row: 3;
-	grid-column: 1;
-}
-
-.enemy1{
-	background-image: url('Game-Images/Enemy1.png');
-	background-repeat: no-repeat;
-	background-size: contain;
-	width: 120px;
-	height: 150px;
-	border: 1px solid #FFFF;
-	grid-column: 1/2;
-}
-.enemy2{
-	background-image: url('Game-Images/Enemy2.png');
-	background-repeat: no-repeat;
-	border: 1px solid #FFFF;
-	background-size: contain;
-	width: 120px;
-	height: 150px;
-	grid-column: 3/4;
-	justify-self: center;
-}
-.enemy3{
-	background-image: url('Game-Images/Enemy3.png');
-	background-repeat: no-repeat;
-	border: 1px solid #FFFF;
-	background-size: contain;
-	width: 120px;
-	height: 150px;
-	grid-column: 7;
-}
- */
-/* .player{
-	background-image: url('Game-Images/player2.png');
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-size: 100px 100px;
-	width: 100px;
-	height: 100px;
-	top: 100px;
-	border: 1px solid #FFFF;
-	position: relative; 
-	grid-row: 3;
-	grid-column: 7;
-	align-self: center;
-}
-*/
 
 .player{
 	grid-column: 1;
@@ -188,15 +132,29 @@ li a{
 }
 
 .startButton{
-	justify-self: center;
-	align-self: end;
-}
+	/* justify-self: center; */
+	/* align-self: end; */
+/* 	background: url('Game-Images/dead-player.png');
+	background-size: auto;
+	background-repeat: no-repeat; */
 
+
+
+
+}
+.startButtonDiv a{
+	text-decoration: none;
+}
 .start{
 	color: #FFFF;
 	font-size: 4rem;
 	text-shadow:2px 1px 30px #FFFF, 5px 1px 30px #CCCC;
 	font-family: 'Orbitron', sans-serif;
+	text-align: center;
+	grid-row: 1;
+	margin-bottom: 0;
+	cursor:pointer;
+
 
 }
 
@@ -228,7 +186,41 @@ li a{
 	margin-left: 10px;
 	font-family: 'Orbitron', sans-serif;
 }
-
-.snoop{
+.middleColumn{
+	display: grid;
+	grid-template-rows: minmax(10px, auto)
+}
+/* .snoop{
 	grid-column: 0;
+	display: none;
+} */
+.dead-player{
+	opacity:0;
+}
+.deadPLayerImgDiv{
+	grid-row: 2;
+	align-self: end;
+}
+.startButtonDiv{
+	grid-row: 1;
+	align-self: end;
+}
+.gameOver{
+	color: #FFFF;
+	text-shadow:2px 1px 30px #FFFF, 5px 1px 30px #CCCC;
+	font-family: 'Orbitron', sans-serif;
+	text-align: center;
+	opacity: 0;
+}	
+.replay{
+	color: #FFFF;
+	text-shadow:2px 1px 30px #FFFF, 5px 1px 30px #CCCC;
+	font-family: 'Orbitron', sans-serif;
+	text-align: center;
+	opacity: 0;
+	cursor: pointer;
+}
+.reappear{
+	opacity: 1;
+	transition: opacity 1.5s ease-out;
 }

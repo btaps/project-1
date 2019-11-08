@@ -34,20 +34,42 @@ const druggie = new Player();
 
 // Find a way to select the game screen and the player
 
+
+
+
+
+
+
+
+
+
+
 let gameScreen = document.querySelector('.gameScreen')
 let player = document.querySelector('.player')
+let score = document.querySelector('.score span')
+let health = document.querySelector('.health span')
+let gameOverMessage = document.querySelector('.replayDiv h1');
+let replayMessage = document.querySelector('.replayDiv h3');
+let deadPlayerImg = document.querySelector('.dead-player');
+let enemies = document.querySelectorAll('enemies')
+
+
+// let snoop = document.querySelector('.snoop')
 
 // wirte function to move player by using top and left properties
 
-const clickStart = ()=>{
+let enemySpawnInterval
 
-startButton.style.display = 'none';
-let score = document.querySelector('.score span')
-let health = document.querySelector('.health span')
+
+
+
+
+
+
 
 let moveUp = ()=>{
 	let topPosition = window.getComputedStyle(player).getPropertyValue('top');
-	if(player.style.top === '-20px'){ 
+	if(player.style.top === '0px'){ 
 		return 
 	}else {
 		let position = parseInt(topPosition)
@@ -58,7 +80,7 @@ let moveUp = ()=>{
 
 let moveDown = ()=>{
 	let topPosition = window.getComputedStyle(player).getPropertyValue('top');
-	if(player.style.top === '460px' ){
+	if(parseInt(player.style.top) > parseInt(window.getComputedStyle(gameScreen).getPropertyValue('height')) - 242){
 		return
 	}else{
 		let position = parseInt(topPosition)
@@ -80,7 +102,7 @@ let moveLeft = ()=>{
 
 let moveRight= ()=>{
 	let leftPosition = window.getComputedStyle(player).getPropertyValue('left');
-	if(player.style.left === '1220px'){
+	if(parseInt(player.style.left) > parseInt(window.getComputedStyle(gameScreen).getPropertyValue('width')) - 160){
 		return
 	}else{
 		let position = parseInt(leftPosition)
@@ -91,7 +113,7 @@ let moveRight= ()=>{
 
 // use key codes for A=65, S=83, D=68, W=87, spacebar=32 to call functions for movement
 
-const shipMoves = (e)=>{
+const guyMoves = (e)=>{
 	if(e.which == 65){
 		moveLeft();
 	}else if(e.which == 68){
@@ -145,7 +167,7 @@ let moveLaser = (laser)=>{
 
 			}
 		})
-		if(xPosition > 1340){
+		if(xPosition > parseInt(window.getComputedStyle(gameScreen).getPropertyValue('width')) - 20){
 			laser.remove();
 			clearInterval(laserInterval)
 			return
@@ -158,7 +180,9 @@ let moveLaser = (laser)=>{
 
 // Event listener for ship to move, fire laser
 
-document.addEventListener('keydown', shipMoves)
+
+
+
 
 // Create an array for enemy images stored in Game-Images folder. 
 // Create an enemy element, append enemy element to gameScreen, make enemy element come from the right side.
@@ -171,10 +195,8 @@ let createEnemyElement = ()=>{
 	let newEnemyElmnt = document.createElement('img')
 	let randomImgSrc = ENEMYarr[Math.floor(Math.random()*ENEMYarr.length)]
 	let randomTopNumber = Math.floor(Math.random()*516)
-	let leftNewEnemyElmntProperty = parseInt(window.getComputedStyle(gameScreen).getPropertyValue('width'))
+	let leftNewEnemyElmntProperty = parseInt(window.getComputedStyle(gameScreen).getPropertyValue('width')) - 20
 
-	// console.log(randomTopNumber)
-	// randomHeightNumber(randomTopNumber);
 	newEnemyElmnt.src = randomImgSrc;
 	newEnemyElmnt.classList.add('enemy')
 	newEnemyElmnt.classList.add('fadeOutExplosion')
@@ -189,16 +211,18 @@ let moveEnemy = (enemy)=>{
 		let xPosition = parseInt(window.getComputedStyle(enemy).getPropertyValue('left'));
 		if(xPosition <= 50){
 			if(enemy.classList == 'enemy fadeOutExplosion'){
-				gameOver();
+				health.innerText = parseInt(health.innerText) - 25
+				if(parseInt(health.innerText) == 0){
+					gameOver();
+				}
 			}
 			enemy.remove();
-			
 		}else{
 			enemy.style.left =`${xPosition - 4}px`
 		}
 	}, 10)
 }
-
+/*
 // Function to lest enemy coming in and EventListener to call it using the E key, E=69.
 
 let letMonsterRoll = (e)=>{
@@ -208,11 +232,11 @@ let letMonsterRoll = (e)=>{
 }
 
 document.addEventListener('keydown',letMonsterRoll)
-//Creates enemy every 3 seconds
-let secondsToSpawn = 3000
+*/
 
 
-setInterval(()=>{setTimeout(createEnemyElement, 1000)}, 1000)
+
+
 
 //function to check if Enemy is hit by laser. 
 
@@ -238,18 +262,59 @@ let checkIfLaserHitEnemy = (laser, enemy)=>{
 	}
 }
 
-const gameOver = ()=>{
-	health.innerText = parseInt(health.innerText) - 25
-
-	if(parseInt(health.innerText) == 0){
-		alert('GAME OVER')
+let removeAll = (classOfElement)=>{
+	for(let i = 0; i<classOfElement.length; i++){
+	gameScreen.removeChild(classOfElement[i])
 	}
 }
 
-}
-let startButton = document.querySelector('.start');
 
-startButton.addEventListener('click', clickStart)
+const gameOver = ()=>{
+	alert(`GAME OVER. PLAYER SCORE ${score.innerText}`);
+	clearInterval(enemySpawnInterval);
+	// snoop.style.display = 'none';
+	document.removeEventListener('keydown', guyMoves)
+
+
+	//removing all enemies after game over
+	let allEnemies = document.querySelectorAll('.enemy')
+	removeAll(allEnemies);
+	//removing all bullets after game over
+	let allLasers = document.querySelectorAll('.laser')
+	removeAll(allLasers);
+
+	player.style.top = '180px';
+	player.style.left = '20px';
+
+	deadPlayerImg.classList.add('reappear');
+	gameOverMessage.classList.add('reappear');
+	replayMessage.classList.add('reappear');
+
+
+	replayMessage.addEventListener('click',()=>{
+		score.innerText = '0'
+		health.innerText = '200'
+		startGame();
+	})
+}
+
+
+let startGame = ()=>{
+	deadPlayerImg.classList.remove('reappear');
+	gameOverMessage.classList.remove('reappear');
+	replayMessage.classList.remove('reappear');
+	startButton.style.display = 'none';
+	startButton.style.opacity = '0';
+	// snoop.style.display = 'block';
+	document.addEventListener('keydown', guyMoves)
+	enemySpawnInterval = setInterval(createEnemyElement, 1000);
+	// e.preventDefault();
+}
+
+
+
+let startButton = document.querySelector('.start');
+startButton.addEventListener('click', startGame);
 
 
 
