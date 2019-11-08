@@ -6,7 +6,7 @@
 
 3) When user finally has the game on screen, player can click on a start button.
 
-4) The game will consist of using the mouse to aim and and use spacebar to shoot. 
+4) The game will consist of using the keyboard to aim and and use spacebar to shoot. 
 
 5) The player will aim at the enemies as they appear.
 

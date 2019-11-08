@@ -164,7 +164,9 @@ let moveLaser = (laser)=>{
 				laser.remove();
 				clearInterval(laserInterval)
 				score.innerText = parseInt(score.innerText) + 100
-
+				if(parseInt(score.innerText) >= 1000){
+					won();
+				}
 			}
 		})
 		if(xPosition > parseInt(window.getComputedStyle(gameScreen).getPropertyValue('width')) - 20){
@@ -315,6 +317,32 @@ let startGame = ()=>{
 
 let startButton = document.querySelector('.start');
 startButton.addEventListener('click', startGame);
+
+let won = ()=>{
+	alert('PLAYER WON!')
+	clearInterval(enemySpawnInterval);
+	document.removeEventListener('keydown', guyMoves)
+
+	let allEnemies = document.querySelectorAll('.enemy')
+	removeAll(allEnemies);
+	let allLasers = document.querySelectorAll('.laser')
+	removeAll(allLasers);
+
+	player.style.top = '180px';
+	player.style.left = '20px';
+	
+	gameOverMessage.classList.add('reappear');
+	replayMessage.classList.add('reappear');
+
+
+
+
+	replayMessage.addEventListener('click',()=>{
+		score.innerText = '0'
+		health.innerText = '200'
+		startGame();
+	})
+}
 
 
 
